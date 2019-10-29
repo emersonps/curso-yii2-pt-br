@@ -4,5 +4,5 @@ return [
     'adminEmail' => 'admin@example.com',
     'senderEmail' => 'noreply@example.com',
     'senderName' => 'Example.com mailer',
-    // 'pagseguro_token' => 'dkjwiejqwoeijqwoe1ij1k1',
+    'endereco' => 'Rua Ademar de Barros, 20 - Sta Cruz / Flores',
 ];

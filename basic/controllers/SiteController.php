@@ -61,6 +61,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        echo Yii::$app->id;die;
+        // echo Yii::$app->basePath;die;
+        // echo Yii::getAlias('@web');die;
+        // echo Yii::$app->params['endereco'];die;
+
         return $this->render('index');
     }
 

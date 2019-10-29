@@ -5,17 +5,26 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'name' => 'Shopping Virtual',
+    'version' => '',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@meualias1' => 'path/to/meu/alias',
     ],
+    'language' => 'pt-BR',
+    'sourceLanguage' => 'pt-BR',
+    // 'catchAll' => [
+    //     'pessoas/index',
+    //     'param1' => 'Emerson',
+    //     'param2' => 'Pinheiro',
+    // ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'dsaok21o21wo12kp1owk12lasj1',
-            // 'enableCookieValidation' => false
+            'cookieValidationKey' => 'y0z5X2znjdbJP8t4sikZTaU993MgDen6',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -69,7 +78,7 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1','::1', '192.168.56.*','192.168.15.*']
     ];
 }
 
