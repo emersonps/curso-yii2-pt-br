@@ -41,6 +41,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
+    /*ACTIONS STAND ALONE*/
     public function actions()
     {
         return [
@@ -59,20 +60,9 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex($id, $name=null)
     {
-        //echo Yii::$app->id;die;
-        // echo Yii::$app->basePath;die;
-        // echo Yii::getAlias('@web');die;
-        // echo Yii::$app->params['endereco'];die;
-
-        $myComponent = Yii::$app->myComponent;
-        $myComponent->printString();
-        echo'<br>';
-        $somaValores = Yii::$app->somaComponent;
-        $somaValores->somaValores(10,20);
-        die;
-
+        var_dump($id, $name);die;
         return $this->render('index');
     }
 
@@ -138,3 +128,11 @@ class SiteController extends Controller
         return $this->render('about');
     }
 }
+
+//rota: composta por 2 ou 3 partes
+//IDDoController/IDdoAction
+//IDDOModule/IDFOController/IDdoAction
+
+//Ex.: http:www.projeto.com.br?r=site/inde
+//Ex.: http:www.projeto.com.br?r=CONTROLLER/ACTION
+
