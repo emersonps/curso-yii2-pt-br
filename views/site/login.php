@@ -9,9 +9,17 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
+
+//nesse mode de visualização, o 'this' faz referência à view, e não ao controlador.
+//Usa-se o 'context' para acessar o controlador que o chamou 
+//O objeto controlador ficará dentro de context
+// echo '<prev>';print_r($this->context);die;
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>
+        <h2>Vídeo aula sobre visões</h2>
+        <?= Html::encode('<h2>Vídeo aula sobre visões</h2>') ?>
+    </h1>
 
     <p>Please fill out the following fields to login:</p>
 

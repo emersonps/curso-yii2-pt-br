@@ -5,6 +5,9 @@
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
+    <div>
+        <?php echo 'Nome: '.$nome.' - '.'Idade '.$idade; ?>
+    </div>
 
     <div class="jumbotron">
         <h1>Congratulations!</h1>

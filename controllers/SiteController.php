@@ -60,10 +60,17 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex($id, $name=null)
+    public function actionIndex()
     {
-        var_dump($id, $name);die;
-        return $this->render('index');
+        // $this->renderPartial('index');//renderiza sem layout
+        // $this->renderAjax('index');//renderiza incluíndo todos os JS, Ajax,SS, arquivos registrados. Usado em requisições AJAX
+        // $this->renderFile('@app/..');//renderiza através de uma alias.
+        // $this->renderStatic('index');//Incorpora um conteúdo estático nesse layout.
+        // Yii::$app->view->renderFile('');//Chamar view em qualquer lugar do arquivo.
+        return $this->render('index',[
+            'nome' => 'Emerson',
+            'idade' => '37'
+        ]);
     }
 
     /**
