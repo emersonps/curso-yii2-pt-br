@@ -26,6 +26,13 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'y0z5X2znjdbJP8t4sikZTaU993MgDen6',
         ],
+        'myComponent' => [
+            'class' => 'app\classes\components\MyComponent',
+            'string' => 'Criando o meu primeiro component no Yii2'
+        ],
+        'somaComponent' => [
+           'class' => 'app\classes\components\SomaComponent',
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
