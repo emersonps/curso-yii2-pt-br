@@ -1,12 +1,37 @@
 <?php
 
 /* @var $this yii\web\View */
+// use yii\jui\DatePicker;
+use kartik\date\DatePicker;
+use app\classes\widgets\HelloWidgetRender;
+use app\classes\widgets\HelloWidget;
+use app\classes\widgets\HelloWorldBeginEndWidget;
 
-$this->title = 'My Yii Application';
+
+$this->title = Yii::$app->name;
 ?>
 <div class="site-index">
     <div>
-        <?php echo 'Nome: '.$nome.' - '.'Idade '.$idade; ?>
+        <?= HelloWidget::widget([
+            'message' => 'Olá mundo!',
+            'submessage' => 'Tudo bem comigo'
+        ]); ?>
+
+        <?= DatePicker::widget([
+            'name' => 'data_venda',
+            'language' => 'pt',
+            // 'dateFormat' => 'dd/MM/yyyy'
+        ]) ?> 
+
+        <?php HelloWorldBeginEndWidget::begin(['encode'=>false]) ?>
+            <h2>Vídeos Aulas do Yii2 Framework</h2>
+            <h3>Vídeos Aulas produzidas pelo Kilderson Sena</h3>
+        <?php HelloWorldBeginEndWidget::end() ?>
+
+        <?= HelloWidgetRender::widget([
+            'message' => 'Olá mundo!',
+            'submessage' => 'Tudo bem comigo'
+        ]); ?>
     </div>
 
     <div class="jumbotron">
