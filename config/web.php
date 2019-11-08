@@ -33,6 +33,10 @@ $config = [
         'somaComponent' => [
            'class' => 'app\classes\components\SomaComponent',
         ],
+        'formatter' => [
+            'class' => 'app\classes\components\MyFormatter',
+            'dateFormat' => 'dd/MM/YYYY'
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -71,7 +75,7 @@ $config = [
     ],
     'modules' => [
         'financeiro' => [
-            'class' => 'app\modules\financeiro\FinanceiroModule',
+            'class' => 'app\modules\financeiro\FinanceiroModule',   
         ]
     ],
     
