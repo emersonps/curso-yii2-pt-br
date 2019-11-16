@@ -71,43 +71,43 @@ class SiteController extends Controller
         $auth = Yii::$app->authManager;
 
         //Criando Auth Pai
-        $admin = $auth->createRole('administrador');
-        $supervisor = $auth->createRole('supervisor');
-        $operador = $auth->createRole('operador');
+        // $admin = $auth->createRole('administrador');
+        // $supervisor = $auth->createRole('supervisor');
+        // $operador = $auth->createRole('operador');
 
         //Gerando Auth Pai - Verificar arquivo rbac\items
-        $auth->add($admin);
-        $auth->add($supervisor);
-        $auth->add($operador);
+        // $auth->add($admin);
+        // $auth->add($supervisor);
+        // $auth->add($operador);
 
         //Criando Auth Pai
-        $viewPost = $auth->createPermission('post-index');
-        $addPost = $auth->createPermission('post-create');
-        $editPost = $auth->createPermission('post-edit');
-        $deletePost = $auth->createPermission('post-delete');
+        // $viewPost = $auth->createPermission('post-index');
+        // $addPost = $auth->createPermission('post-create');
+        // $editPost = $auth->createPermission('post-edit');
+        // $deletePost = $auth->createPermission('post-delete');
 
         //Gerando Auth 
-        $auth->add($viewPost);
-        $auth->add($addPost);
-        $auth->add($editPost);
-        $auth->add($deletePost);
+        // $auth->add($viewPost);
+        // $auth->add($addPost);
+        // $auth->add($editPost);
+        // $auth->add($deletePost);
 
         //Tornando Auth anteriores em filhas  
-        $auth->addChild($admin, $viewPost);
-        $auth->addChild($admin, $addPost);
-        $auth->addChild($admin, $editPost);
-        $auth->addChild($admin, $deletePost);
+        // $auth->addChild($admin, $viewPost);
+        // $auth->addChild($admin, $addPost);
+        // $auth->addChild($admin, $editPost);
+        // $auth->addChild($admin, $deletePost);
 
-        $auth->addChild($supervisor, $addPost);
-        $auth->addChild($supervisor, $editPost);
-        $auth->addChild($supervisor, $viewPost);
+        // $auth->addChild($supervisor, $addPost);
+        // $auth->addChild($supervisor, $editPost);
+        // $auth->addChild($supervisor, $viewPost);
 
-        $auth->addChild($operador, $viewPost);
+        // $auth->addChild($operador, $viewPost);
 
         //Atribuíndo regras a usuários. 
-        $auth->assign($admin, 1); //Usuario 1 Fulano A
-        $auth->assign($supervisor, 2); //Usuario 1 Fulano B
-        $auth->assign($operador, 3); //Usuario 1 Fulano C
+        // $auth->assign($admin, 1); //Usuario 1 Fulano A
+        // $auth->assign($supervisor, 2); //Usuario 1 Fulano B
+        // $auth->assign($operador, 3); //Usuario 1 Fulano C
 
         return $this->render('index');
     }
