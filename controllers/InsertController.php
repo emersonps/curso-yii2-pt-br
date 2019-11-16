@@ -4,7 +4,7 @@
   use yii\web\Controller;
   use app\models\Cliente;
   use Yii;
-  
+
   class InsertController extends Controller
   {
     public function actionIndex()
@@ -28,7 +28,7 @@
         ->createCommand()
         ->batchInsert(Cliente::tablename(), ['nome'], $clientes)
         ->execute();  
-
+      
       echo 'OK!';
 
     }
