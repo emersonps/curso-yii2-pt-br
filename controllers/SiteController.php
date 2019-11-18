@@ -112,6 +112,20 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+    public function actionShop()
+    {
+        $this->layout = 'shop';
+        
+        return $this->render('shop');
+    }
+
+    public function actionServices()
+    {
+        $this->layout = 'shop';
+
+        $this->render('services');
+    }
+
     /**
      * Login action.
      *
