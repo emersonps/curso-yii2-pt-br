@@ -68,7 +68,7 @@ class SiteController extends Controller
         // $this->renderStatic('index');//Incorpora um conteúdo estático nesse layout.
         // Yii::$app->view->renderFile('');//Chamar view em qualquer lugar do arquivo.
 
-        $auth = Yii::$app->authManager;
+        // $auth = Yii::$app->authManager;
 
         //Criando Auth Pai
         // $admin = $auth->createRole('administrador');
@@ -122,8 +122,8 @@ class SiteController extends Controller
     public function actionServices()
     {
         $this->layout = 'shop';
-
-        $this->render('services');
+        
+        return $this->render('services');
     }
 
     /**
