@@ -16,6 +16,9 @@ use app\models\Funcionario;
 use app\models\Cargo;
 use app\models\Pessoa;
 use app\models\PessoaFisica;
+use app\models\Programador;
+use app\models\Linguagem;
+use app\models\ProgramadorLinguagem;
 
 class SiteController extends Controller
 {
@@ -203,18 +206,76 @@ class SiteController extends Controller
         
         // die('OK');
 
-        $pessoas = Pessoa::find()->all();
+        // $pessoas = Pessoa::find()->all();
 
-        foreach($pessoas as $pessoa){
-            echo 
-            "<h2>
-                Nome: {$pessoa->nome} |
-                CPF: {$pessoa->pessoaFisica->cpf} |
-                SEXO: {$pessoa->pessoaFisica->sexo} |
-            </h2>";
-        }
-        die();
+        // foreach($pessoas as $pessoa){
+        //     echo 
+        //     "<h2>
+        //         Nome: {$pessoa->nome} |
+        //         CPF: {$pessoa->pessoaFisica->cpf} |
+        //         SEXO: {$pessoa->pessoaFisica->sexo} |
+        //     </h2>";
+        // }
+        // die();
 
+        //==> N:N
+        // $prog = new Programador();
+        // $prog->nome = 'Alessandro';
+        // $prog->save();
+
+        // $ling = new Linguagem();
+        // $ling->nome = 'PHP';
+        // $ling->save();
+
+        // $prog_ling = new ProgramadorLinguagem();
+        // $prog_ling->programador_id = 1;
+        // $prog_ling->linguagem_id = 2;
+        // $prog_ling->save();
+     
+        // $programadores = Programador::find()->all();
+
+        // foreach($programadores as $programador){
+        //     echo "<h2>";
+        //         echo $programador->nome. ' - '. $programador->github;
+
+        //         echo "<ul>";
+        //         foreach($programador->linguagens as $linguagem){
+        //             echo "<li>{$linguagem->nome}</li>";
+        //         }
+        //         echo "</ul>";
+                
+        //     echo "</h2>";
+        // }
+
+        // $linguagens = Linguagem::find()->all();
+
+        // foreach($linguagens as $linguagem){
+        //     echo "<h2>";
+        //         echo $linguagem->nome;
+
+        //         echo "<ul>";
+        //         foreach($linguagem->programadores as $programadores){
+        //             echo "<li>{$programadores->nome} - $programadores->github</li>";
+        //         }
+        //         echo "</ul>";
+                
+        //     echo "</h2>";
+        // }
+            
+        // die;
+
+        $programador = new Programador;
+        $programador->nome = 'Fulano';
+        $programador->github = '@fulano';
+        $programador->save();
+
+        $linguagem = new Linguagem;
+        $linguagem->nome = 'Swift';
+        $linguagem->save();
+
+        $programador->link('linguagens',$linguagem);
+
+        die;
         return $this->render('index');
     }
 
