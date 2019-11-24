@@ -11,6 +11,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Client;
 use yii\helpers\StringHelper;
+use yii\helpers\Url;
 
 class SiteController extends Controller
 {
@@ -119,17 +120,26 @@ class SiteController extends Controller
         // var_dump(StringHelper::truncateWords('Emerson Pinheiro de Souza', 2));
         // var_dump(StringHelper::truncateWords('Emerson Pinheiro de Souza', 2));
 
-        $client = new Client;
+        // $client = new Client;
 
-        $client->name = "Emerson Pinheiro";
-        if(!$client->save()){
-            echo '<prev>';
-            print_r($client->getErrors());die;
-        }
+        // $client->name = "Emerson Pinheiro";
+        // if(!$client->save()){
+        //     echo '<prev>';
+        //     print_r($client->getErrors());die;
+        // }
 
-        echo 'OK';
-        die;
+        // echo 'OK';
+        // die;
+        
+        echo '<h1>'.(Yii::getAlias('@yii')).'</h1>';
+        echo '<h1>'.(Yii::getAlias('@webroot')).'</h1>';
+        echo '<h1>'.(Yii::getAlias('@vendor')).'</h1>';
+        echo '<h1>'.(Yii::getAlias('@web')).'</h1>';
+        echo '<h1>'.(Yii::getAlias('@galeriaPath')).'</h1>';
+        echo '<h1>'.(Yii::getAlias('@galeriaUrl')).'</h1>';
 
+        echo Url::to('@web/a/b/c/d'); // fazer essa mudança em web=>Componentes: 'baseUrl' => Yii::getAlias('@web'), //Para o Helper poder fazer essa mudança
+            die;
         return $this->render('index');
     }
 

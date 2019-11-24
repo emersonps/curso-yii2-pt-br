@@ -3,6 +3,9 @@
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
+Yii::setAlias('@webroot',dirname(__DIR__).'/web');
+Yii::setAlias('@web',(stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://' . $_SERVER['SERVER_NAME'] . ($_SERVER['SERVER_PORT'] !== '80' ? ':' . $_SERVER['SERVER_PORT'] : '')));
+
 $config = [
     'id' => 'basic',
     'name' => 'Shopping Virtual',
@@ -13,6 +16,8 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
         '@meualias1' => 'path/to/meu/alias',
+        '@galeriaPath' => '@webroot/web/uploads/galerias',
+        '@galeriaUrl' => '@web/uploads/galerias',
     ],
     'language' => 'pt-BR',
     'sourceLanguage' => 'pt-BR',
@@ -25,6 +30,7 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'y0z5X2znjdbJP8t4sikZTaU993MgDen6',
+            'baseUrl' => Yii::getAlias('@web'),//Para o Helper poder fazer essa mudança
         ],
         'myComponent' => [
             'class' => 'app\classes\components\MyComponent',
