@@ -14,6 +14,8 @@ use yii\helpers\StringHelper;
 use yii\helpers\Url;
 use app\models\Funcionario;
 use app\models\Cargo;
+use app\models\Pessoa;
+use app\models\PessoaFisica;
 
 class SiteController extends Controller
 {
@@ -114,6 +116,8 @@ class SiteController extends Controller
         // $auth->assign($supervisor, 2); //Usuario 1 Fulano B
         // $auth->assign($operador, 3); //Usuario 1 Fulano C
 
+        //==> Helper Strings
+
         //terceiro parâmetro serve para ignorar ou não o case-sensitive
         // var_dump(StringHelper::startsWith('Yii Academy', 'Yii',false));
         // var_dump(StringHelper::endsWith('Academy', 'Academy'));
@@ -133,6 +137,8 @@ class SiteController extends Controller
         // echo 'OK';
         // die;
         
+        //==> Aliases
+
         // echo '<h1>'.(Yii::getAlias('@yii')).'</h1>';
         // echo '<h1>'.(Yii::getAlias('@webroot')).'</h1>';
         // echo '<h1>'.(Yii::getAlias('@vendor')).'</h1>';
@@ -143,7 +149,10 @@ class SiteController extends Controller
         // echo Url::to('@web/a/b/c/d'); // fazer essa mudança em web=>Componentes: 'baseUrl' => Yii::getAlias('@web'), //Para o Helper poder fazer essa mudança
         //     die;
 
-        /** @var Funcionario[] $funcionarios */
+
+        //==> 1:N, N:1
+
+        // /** @var Funcionario[] $funcionarios */
         
         // $model = new Funcionario();
 
@@ -152,32 +161,59 @@ class SiteController extends Controller
         // $model->save();
         // die('OK');
 
-        $funcionarios = Funcionario::find()->all();
+        // $funcionarios = Funcionario::find()->all();
             
-        foreach($funcionarios as $funcionario){
-            echo "<h2>
-                Nome: {$funcionario->nome} | 
-                Cargo: {$funcionario->cargo->nome}
-                </h2>"; 
+        // foreach($funcionarios as $funcionario){
+        //     echo "<h2>
+        //         Nome: {$funcionario->nome} | 
+        //         Cargo: {$funcionario->cargo->nome}
+        //         </h2>"; 
+        // }
+
+        // $cargos = Cargo::find()->all();
+
+        // foreach($cargos as $cargo){
+        //     echo "<h2>";
+        //     echo $cargo->nome;
+
+        //     echo "<ul>";
+
+        //         foreach($cargo->funcionarios as $func){
+        //             echo "<li>$func->nome</li>";
+        //         }
+
+        //     echo "</h2>";
+
+        // }
+
+        // die;
+
+        //==> 1:1
+        // $pessoa = new Pessoa();
+
+        // $pessoa->nome = "Sandriane";
+        // $pessoa->email = "san@bol.com.br";
+        // $pessoa->save();
+        
+        // $pf = new PessoaFisica();
+        // $pf->pessoa_id = '3';
+        // $pf->cpf = '23312223322';
+        // $pf->sexo = 'M';
+        // $pf->save();
+        
+        // die('OK');
+
+        $pessoas = Pessoa::find()->all();
+
+        foreach($pessoas as $pessoa){
+            echo 
+            "<h2>
+                Nome: {$pessoa->nome} |
+                CPF: {$pessoa->pessoaFisica->cpf} |
+                SEXO: {$pessoa->pessoaFisica->sexo} |
+            </h2>";
         }
-
-        $cargos = Cargo::find()->all();
-
-        foreach($cargos as $cargo){
-            echo "<h2>";
-            echo $cargo->nome;
-
-            echo "<ul>";
-
-                foreach($cargo->funcionarios as $func){
-                    echo "<li>$func->nome</li>";
-                }
-
-            echo "</h2>";
-
-        }
-
-        die;
+        die();
 
         return $this->render('index');
     }
