@@ -36,7 +36,7 @@
     {
       return [
         'error' => [
-          'class' => 'yii\web\ErrorActon',
+          'class' => 'yii\web\ErrorAction',
         ],
       ];
     }

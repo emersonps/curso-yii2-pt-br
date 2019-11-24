@@ -12,6 +12,8 @@ use app\models\ContactForm;
 use app\models\Client;
 use yii\helpers\StringHelper;
 use yii\helpers\Url;
+use app\models\Funcionario;
+use app\models\Cargo;
 
 class SiteController extends Controller
 {
@@ -131,15 +133,52 @@ class SiteController extends Controller
         // echo 'OK';
         // die;
         
-        echo '<h1>'.(Yii::getAlias('@yii')).'</h1>';
-        echo '<h1>'.(Yii::getAlias('@webroot')).'</h1>';
-        echo '<h1>'.(Yii::getAlias('@vendor')).'</h1>';
-        echo '<h1>'.(Yii::getAlias('@web')).'</h1>';
-        echo '<h1>'.(Yii::getAlias('@galeriaPath')).'</h1>';
-        echo '<h1>'.(Yii::getAlias('@galeriaUrl')).'</h1>';
+        // echo '<h1>'.(Yii::getAlias('@yii')).'</h1>';
+        // echo '<h1>'.(Yii::getAlias('@webroot')).'</h1>';
+        // echo '<h1>'.(Yii::getAlias('@vendor')).'</h1>';
+        // echo '<h1>'.(Yii::getAlias('@web')).'</h1>';
+        // echo '<h1>'.(Yii::getAlias('@galeriaPath')).'</h1>';
+        // echo '<h1>'.(Yii::getAlias('@galeriaUrl')).'</h1>';
 
-        echo Url::to('@web/a/b/c/d'); // fazer essa mudança em web=>Componentes: 'baseUrl' => Yii::getAlias('@web'), //Para o Helper poder fazer essa mudança
-            die;
+        // echo Url::to('@web/a/b/c/d'); // fazer essa mudança em web=>Componentes: 'baseUrl' => Yii::getAlias('@web'), //Para o Helper poder fazer essa mudança
+        //     die;
+
+        /** @var Funcionario[] $funcionarios */
+        
+        // $model = new Funcionario();
+
+        // $model->nome = "Leticia Souza";
+        // $model->cargo_id = 4;
+        // $model->save();
+        // die('OK');
+
+        $funcionarios = Funcionario::find()->all();
+            
+        foreach($funcionarios as $funcionario){
+            echo "<h2>
+                Nome: {$funcionario->nome} | 
+                Cargo: {$funcionario->cargo->nome}
+                </h2>"; 
+        }
+
+        $cargos = Cargo::find()->all();
+
+        foreach($cargos as $cargo){
+            echo "<h2>";
+            echo $cargo->nome;
+
+            echo "<ul>";
+
+                foreach($cargo->funcionarios as $func){
+                    echo "<li>$func->nome</li>";
+                }
+
+            echo "</h2>";
+
+        }
+
+        die;
+
         return $this->render('index');
     }
 
