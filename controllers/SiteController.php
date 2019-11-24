@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\helpers\StringHelper;
 
 class SiteController extends Controller
 {
@@ -109,6 +110,15 @@ class SiteController extends Controller
         // $auth->assign($supervisor, 2); //Usuario 1 Fulano B
         // $auth->assign($operador, 3); //Usuario 1 Fulano C
 
+        //terceiro parâmetro serve para ignorar ou não o case-sensitive
+        var_dump(StringHelper::startsWith('Yii Academy', 'Yii',false));
+        var_dump(StringHelper::endsWith('Academy', 'Academy'));
+        var_dump(StringHelper::countWords('Emerson Pinheiro de Souza'));
+        var_dump(StringHelper::truncate('Emerson Pinheiro de Souza', 4,' (...)'));
+        var_dump(StringHelper::truncateWords('Emerson Pinheiro de Souza', 2));
+        var_dump(StringHelper::truncateWords('Emerson Pinheiro de Souza', 2));
+
+        die;
         return $this->render('index');
     }
 
